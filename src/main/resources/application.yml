@@ -1,0 +1,34 @@
+spring:
+  application:
+    name: audit-service
+
+#setup service discovery eureka
+eureka:
+  instance:
+    status-page-url-path: /actuator/health
+    hostname: 38.242.206.98
+  client:
+    region: ID-Bandung - Batununggal
+    service-url:
+      defaultZone: http://eureka:password@38.242.206.98:8761/eureka
+
+# Management Actuator Endpoint
+management:
+  tracing:
+    sampling:
+      probability: 1.0
+  endpoint:
+    prometheus:
+      enabled: true
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+  metrics:
+    tags:
+      application: ${spring.application.name}
+  prometheus:
+    metrics:
+      export:
+        enabled: true
+

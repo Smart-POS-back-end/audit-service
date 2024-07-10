@@ -1,0 +1,32 @@
+#setup server
+server:
+  port: 0
+  servlet:
+    context-path: /
+
+spring:
+  devtools:
+    add-properties: false
+  datasource:
+    url: jdbc:postgresql://localhost:5432/audit
+    driverClassName: org.postgresql.Driver
+    username: postgres
+    password: 123456
+  jpa:
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+        format_sql: true
+        jdbc:
+          batch_size: 20
+        order_inserts: true
+        defer-datasource-initialization: true
+        show_sql: false
+        hbm2ddl:
+          auto: update
+    defer-datasource-initialization: true
+
+logging:
+  level:
+    web: info
+    audit-service: info
